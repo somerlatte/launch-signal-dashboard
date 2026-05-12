@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Launch Signal Dashboard</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <aside class="sidebar" aria-label="Dashboard navigation">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">LS</div>
+          <div>
+            <p class="eyebrow">Remote AI Engineer Assessment</p>
+            <h1>Launch Signal</h1>
+          </div>
+        </div>
+
+        <nav class="nav-list" aria-label="Sections">
+          <a href="#overview" class="nav-item active">Overview</a>
+          <a href="#launches" class="nav-item">Launches</a>
+          <a href="#contacts" class="nav-item">Contacts</a>
+          <a href="#outreach" class="nav-item">DM drafts</a>
+        </nav>
+
+        <section class="source-panel" aria-label="Data sources">
+          <p class="panel-title">Signal sources</p>
+          <div class="source-row"><span>X launch posts</span><strong>Seeded</strong></div>
+          <div class="source-row"><span>LinkedIn posts</span><strong>Connector</strong></div>
+          <div class="source-row"><span>Crunchbase / YC</span><strong>Connector</strong></div>
+          <div class="source-row"><span>Contact enrichment</span><strong>Connector</strong></div>
+        </section>
+      </aside>
+
+      <section class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Launch intelligence dashboard</p>
+            <h2 id="overview">Find funded launches with weak social traction</h2>
+          </div>
+          <div class="actions">
+            <label class="file-button">
+              Import CSV
+              <input id="csvInput" type="file" accept=".csv" />
+            </label>
+            <button id="exportButton" type="button">Export leads</button>
+          </div>
+        </header>
+
+        <section class="metrics-grid" aria-label="Dashboard metrics">
+          <article class="metric">
+            <span>Total raised</span>
+            <strong id="totalRaised">$0</strong>
+            <small>Across visible launches</small>
+          </article>
+          <article class="metric">
+            <span>Avg. X likes</span>
+            <strong id="avgXLikes">0</strong>
+            <small>Launch post engagement</small>
+          </article>
+          <article class="metric">
+            <span>Weak launches</span>
+            <strong id="weakLaunches">0</strong>
+            <small>Under selected threshold</small>
+          </article>
+          <article class="metric">
+            <span>Enriched contacts</span>
+            <strong id="enrichedContacts">0%</strong>
+            <small>Email, phone, LinkedIn, X</small>
+          </article>
+        </section>
+
+        <section class="control-bar" aria-label="Filters">
+          <div class="search-wrap">
+            <label for="searchInput">Search</label>
+            <input id="searchInput" type="search" placeholder="Company, founder, source, stage" />
+          </div>
+          <div class="filter-group">
+            <label for="stageFilter">Stage</label>
+            <select id="stageFilter">
+              <option value="all">All stages</option>
+              <option value="Pre-seed">Pre-seed</option>
+              <option value="Seed">Seed</option>
+              <option value="Series A">Series A</option>
+              <option value="Growth">Growth</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="thresholdInput">Poor launch threshold</label>
+            <input id="thresholdInput" type="number" min="0" step="50" value="500" />
+          </div>
+          <div class="filter-group">
+            <label for="sortSelect">Sort</label>
+            <select id="sortSelect">
+              <option value="opportunity">Opportunity score</option>
+              <option value="raised">Amount raised</option>
+              <option value="xLikes">X likes</option>
+              <option value="linkedinLikes">LinkedIn likes</option>
+            </select>
+          </div>
+        </section>
+
+        <section class="main-grid">
+          <article class="table-panel" id="launches">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Ranked lead list</p>
+                <h3>Launches and funding</h3>
+              </div>
+              <span id="resultCount" class="count-pill">0 results</span>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Company</th>
+                    <th>Raised</th>
+                    <th>X likes</th>
+                    <th>LinkedIn</th>
+                    <th>Stage</th>
+                    <th>Fit</th>
+                  </tr>
+                </thead>
+                <tbody id="launchTable"></tbody>
+              </table>
+            </div>
+          </article>
+
+          <aside class="detail-panel" id="contacts">
+            <div id="companyDetail"></div>
+          </aside>
+        </section>
+
+        <section class="outreach-panel" id="outreach">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Double bonus</p>
+              <h3>Draft a DM for a weak launch</h3>
+            </div>
+            <div class="filter-group compact">
+              <label for="toneSelect">Tone</label>
+              <select id="toneSelect">
+                <option value="warm">Warm</option>
+                <option value="direct">Direct</option>
+                <option value="technical">Technical</option>
+              </select>
+            </div>
+          </div>
+          <div class="dm-grid">
+            <select id="dmCompanySelect" aria-label="Company for DM draft"></select>
+            <textarea id="dmDraft" rows="8" aria-label="Generated DM draft"></textarea>
+            <button id="copyDmButton" type="button">Copy draft</button>
+          </div>
+        </section>
+
+        <section class="notes-panel">
+          <p class="panel-title">Implementation note</p>
+          <p>
+            This prototype ships with assessment-safe sample records and an import path. In production, the same data model can be filled by API jobs for X, LinkedIn, Crunchbase, YC, Google News, Apollo/Clearbit-style enrichment, and an LLM draft endpoint.
+          </p>
+        </section>
+      </section>
+    </main>
+    <script src="./app.js"></script>
+  </body>
+</html>
