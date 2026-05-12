@@ -255,7 +255,7 @@ function renderTable(launches) {
           <td>${integer.format(Number(launch.linkedinLikes || 0))}</td>
           <td>${launch.stage}</td>
           <td>
-            <span class="status-pill ${weak ? "weak" : "good"}">${weak ? "Weak" : "Healthy"}</span>
+            <span class="status-pill ${weak ? "weak" : "good"}">${weak ? "Weak" : "Good"}</span>
             <span class="score-pill">${opportunityScore(launch)} fit</span>
           </td>
         </tr>
