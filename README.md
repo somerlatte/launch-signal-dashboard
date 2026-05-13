@@ -4,7 +4,9 @@ Launch Signal is a static dashboard prototype for identifying recently funded co
 
 ## Demo
 
-Open `index.html` directly in a browser, or run a local static server:
+Live: [https://somerlatte.github.io/launch-signal-dashboard/](https://somerlatte.github.io/launch-signal-dashboard/)
+
+Or run locally with a static server:
 
 ```bash
 python3 -m http.server 4173
