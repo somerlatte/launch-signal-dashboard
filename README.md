@@ -94,4 +94,3 @@ The current app is client-only so reviewers can run it immediately. A production
 - `styles.css` - responsive dashboard styling
 - `app.js` - seeded data, ranking logic, filters, CSV import/export, and DM generation
 - `sample_launches.csv` - import example
-- `SUBMISSION.md` - recommended submission format and recruiter message
