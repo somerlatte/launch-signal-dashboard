@@ -102,16 +102,7 @@ button:hover,
   top: 0;
   height: 100vh;
   padding: 22px;
-  background:
-    linear-gradient(
-      90deg,
-      transparent 0,
-      transparent 78%,
-      var(--red) 78%,
-      var(--red) 82%,
-      transparent 82%
-    ),
-    var(--charcoal);
+  background: var(--charcoal);
   color: var(--white);
   display: flex;
   flex-direction: column;
@@ -708,7 +699,8 @@ tbody tr.selected {
 .outreach-panel {
   display: grid;
   gap: 16px;
-  background: var(--panel);
+  background:
+    linear-gradient(90deg, var(--red) 0 14px, transparent 14px), var(--panel);
 }
 
 .dm-grid {
@@ -740,6 +732,11 @@ textarea {
 
   .topbar {
     padding-right: 190px;
+  }
+
+  .topbar::after {
+    width: 118px;
+    height: 118px;
   }
 }
 
