@@ -48,7 +48,7 @@ Each launch record is normalized into this shape:
 }
 ```
 
-The seeded records are assessment-safe examples modeled from the launch-post references provided in `Launch Video Refs.pdf`. Live API credentials and scraped private data are intentionally not embedded in the client.
+The seeded records are assessment-safe examples modeled from the launch-post references provided in `Launch Video Refs`. Live API credentials and scraped private data are intentionally not embedded in the client.
 
 ## CSV Import
 
